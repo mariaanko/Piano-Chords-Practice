@@ -8,6 +8,8 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.1895" />
         <entry key="app/src/main/res/drawable/selected_foreground.xml" value="0.1945" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_run.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/row_layout.xml" value="0.33" />
       </map>
     </option>

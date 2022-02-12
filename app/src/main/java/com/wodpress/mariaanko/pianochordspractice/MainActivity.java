@@ -5,11 +5,14 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -47,10 +50,9 @@ public class MainActivity extends AppCompatActivity implements ChordsAdapter.OnC
         fabStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Starting...", Snackbar.LENGTH_SHORT)
-                        .show();
-
-
+                Intent intent = new Intent(MainActivity.this, RunActivity.class);
+                intent.putExtra("items", imagesToLoadArray);
+                startActivity(intent);
             }
         });
     }
