@@ -11,6 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +43,16 @@ public class MainActivity extends AppCompatActivity implements ChordsAdapter.OnC
         chordsAdapter = new ChordsAdapter(MainActivity.this, imagesArrayList, this);
         recyclerView.setAdapter(chordsAdapter);
 
+        FloatingActionButton fabStart = findViewById(R.id.fab_start);
+        fabStart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Starting...", Snackbar.LENGTH_SHORT)
+                        .show();
+
+
+            }
+        });
     }
 
     @Override
