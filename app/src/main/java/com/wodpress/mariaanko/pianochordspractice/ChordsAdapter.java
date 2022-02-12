@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import androidx.annotation.DimenRes;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class ChordsAdapter extends RecyclerView.Adapter<ChordsAdapter.MyViewHold
 
     ArrayList<String> images;
     Context context;
+    CardView cardView;
     private OnChordListener onChordListener;
 
     public ChordsAdapter(Context context, ArrayList<String> images, OnChordListener onChordListener) {

@@ -29,8 +29,6 @@ public class MainActivity extends AppCompatActivity implements ChordsAdapter.OnC
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         GridLayoutManager linearLayoutManager = new GridLayoutManager(getApplicationContext(), 4);
         recyclerView.setLayoutManager(linearLayoutManager);
-        ChordsAdapter.ItemOffsetDecoration itemDecoration = new ChordsAdapter.ItemOffsetDecoration(this, R.dimen.item_offset);
-        recyclerView.addItemDecoration(itemDecoration);
         String[] images = new String[0];
         try {
             images = this.getAssets().list("chords");
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements ChordsAdapter.OnC
             e.printStackTrace();
         }
         imagesArrayList = new ArrayList<>(Arrays.asList(images));
-        imagesToLoadArray = imagesArrayList;
+        imagesToLoadArray.addAll(imagesArrayList);
         chordsAdapter = new ChordsAdapter(MainActivity.this, imagesArrayList, this);
         recyclerView.setAdapter(chordsAdapter);
 
@@ -50,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements ChordsAdapter.OnC
         if(!imagesToLoadArray.contains(imagesArrayList.get(position))){
             imagesToLoadArray.add(imagesArrayList.get(position));
             imageView.setBackgroundResource(0);
+            imageView.setImageAlpha(1000);
         }else{
             imagesToLoadArray.remove(imagesArrayList.get(position));
             imageView.setBackgroundResource(R.drawable.unselected_foreground);
