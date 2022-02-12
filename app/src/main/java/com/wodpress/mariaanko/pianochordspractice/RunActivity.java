@@ -36,11 +36,12 @@ public class RunActivity extends AppCompatActivity {
         mImageView = findViewById(R.id.randomImageView);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(RunActivity.this);
-        ArrayList<String> intervalList = new ArrayList<>(R.array.interval);
+        int[] intervalList = getResources().getIntArray(R.array.interval);
 
         builder.setTitle("Pick interval (seconds)")
-                .setItems(R.array.interval, new DialogInterface.OnClickListener() {
+                .setItems(R.array.intervalString, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+                        int interval = (intervalList[which]) * 1000;
                         final Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             @Override
@@ -56,9 +57,9 @@ public class RunActivity extends AppCompatActivity {
 
                                 Bitmap bitmap = BitmapFactory.decodeStream(ims);
                                 mImageView.setImageBitmap(bitmap);
-                                handler.postDelayed(this, (Integer.getInteger(intervalList.get(which))) * 1000);
+                                handler.postDelayed(this, interval);
                             }
-                        }, (Integer.getInteger(intervalList.get(which))) * 1000);
+                        }, interval);
                     }
                 });
         builder.create();
