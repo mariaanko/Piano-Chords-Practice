@@ -43,6 +43,17 @@ public class RunActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         int interval = (intervalList[which]) * 1000;
                         final Handler handler = new Handler();
+                        InputStream ims = null;
+                        try {
+                            ims = getBaseContext()
+                                    .getAssets()
+                                    .open("chords/" + imageItemsList.get(random.nextInt(imageItemsList.size())));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        Bitmap bitmap = BitmapFactory.decodeStream(ims);
+                        mImageView.setImageBitmap(bitmap);
+
                         handler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
